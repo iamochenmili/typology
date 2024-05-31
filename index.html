@@ -1,107 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Соционический тест</title>
-<style>
-  body {
-    font-family: Arial, sans-serif; /* Устанавливаем шрифт для всей страницы */
-    font-size: 16px; /* Одинаковый размер текста для всей страницы */
-  }
-  h1, h2 {
-    text-align: center; /* Центрируем заголовки */
-  }
-  .question {
-    margin-bottom: 20px;
-  }
-  form {
-    margin: 0 auto;
-    width: fit-content;
-    padding: 20px;
-  }
-  #result p {
-    margin: 5px 0; /* Устанавливаем одинаковые отступы для абзацев результатов */
-  }
-</style>
+    <title>Соционический тест</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+  
 <body>
+  <div class="center-container">
+  <h1>Соционический тест</h1>
 
-<h1>Соционический тест</h1> <!-- Заголовок теста -->
+  <form id="socionicsTest">
+      <p>Что из этого для вас более привлекательно для изучения?</p>
+      <input type="radio" name="question1" value="theories"> Интересные теории<br>
+      <input type="radio" name="question1" value="skills"> Практические навыки<br>
 
-<form id="sociotypeTest">
-  <!-- Первый вопрос -->
-  <div class="question">
-    <p>Что из этого для вас более привлекательно для изучения?</p>
-    <input type="radio" id="theories" name="q1" value="theories">
-    <label for="theories">Интересные теории</label><br>
-    <input type="radio" id="skills" name="q1" value="skills">
-    <label for="skills">Практические навыки</label>
-  </div>
+      <p>Что вам больше интересно:</p>
+      <input type="radio" name="question2" value="shopping"> Выбирать одежду в магазине, изучать вкусы блюд, экспериментировать с вкусом в музыке<br>
+      <input type="radio" name="question2" value="developing"> Развивать свой потенциал, способности<br>
 
-  <!-- Второй вопрос -->
-  <div class="question">
-    <p>Что вам больше интересно:</p>
-    <input type="radio" id="clothes" name="q2" value="clothes">
-    <label for="clothes">Выбирать одежду в магазине, изучать вкусы блюд, экспериментировать со вкусом в музыке</label><br>
-    <input type="radio" id="potential" name="q2" value="potential">
-    <label for="potential">Развивать свой потенциал, способности</label>
-  </div>
+      <button type="button" onclick="showResults()">Показать результат</button>
+  </form>
 
-  <button type="button" onclick="calculateResults()">Получить результат</button>
-</form>
+  <div id="results"></div>
+    </div>
+  <script>
+      function showResults() {
+          const answers = {
+              question1: document.querySelector('input[name="question1"]:checked') ? document.querySelector('input[name="question1"]:checked').value : null,
+              question2: document.querySelector('input[name="question2"]:checked') ? document.querySelector('input[name="question2"]:checked').value : null,
+          };
 
-<div id="result"></div>
+          // Баллы для каждого типа
+          let typesScores = {
+              ile: 0, sei: 0, ese: 0, lii: 0,
+              eie: 0, lsi: 0, sle: 0, iei: 0,
+              see: 0, ili: 0, lie: 0, esi: 0,
+              lse: 0, eii: 0, iee: 0, sli: 0
+          };
 
-<script>
-  function calculateResults() {
-    const types = {
-      ile: 0, sei: 0, ese: 0, lii: 0, 
-      eie: 0, lsi: 0, sle: 0, iei: 0,
-      see: 0, ili: 0, lie: 0, esi: 0,
-      lse: 0, eii: 0, iee: 0, sli: 0
-    };
+          // Настройка распределения баллов
+          if (answers.question1 === "theories") {
+              ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+          } else if (answers.question1 === "skills") {
+              ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+          }
 
-    // Обработка формы и подсчет результатов
-    const form = document.getElementById('sociotypeTest');
-    const formData = new FormData(form);
+          if (answers.question2 === "shopping") {
+              ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+          } else if (answers.question2 === "developing") {
+              ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+          }
 
-    for (let entry of formData.entries()) {
-      const [question, value] = entry;
-      switch(question) {
-        case 'q1':
-          updateScores(value, 'theories', ['ile', 'sei', 'ese', 'lii', 'eie', 'lsi', 'sle', 'iei'], types);
-          break;
-        case 'q2':
-          updateScores(value, 'clothes', ['ile', 'sei', 'ese', 'lii', 'lse', 'eii', 'iee', 'sli'], types);
-          break;
+          // Сортировка и вывод результатов
+          const sortedResults = Object.entries(typesScores).sort((a, b) => b[1] - a[1]);
+          const resultsDiv = document.getElementById("results");
+          resultsDiv.innerHTML = '<h2>Результаты:</h2>';
+          sortedResults.forEach(result => {
+              resultsDiv.innerHTML += `<p>${result[0].toUpperCase()}: ${result[1]}</p>`;
+          });
       }
-    }
-
-    displayResults(types);
-  }
-
-  // Функция для обновления счетов
-  function updateScores(value, matchValue, typeKeys, types) {
-    if (value === matchValue) {
-      typeKeys.forEach(key => types[key]++);
-    } else {
-      typeKeys.forEach(key => {
-        const index = typeKeys.indexOf(key);
-        const alternateTypes = ['eie', 'lsi', 'sle', 'iei', 'see', 'ili', 'lie', 'esi', 'lse', 'eii', 'iee', 'sli'];
-        types[alternateTypes[index]]++;
-      });
-    }
-  }
-
-  // Отображение отсортированных результатов
-  function displayResults(types) {
-    const sortedTypes = Object.entries(types).sort((a, b) => b[1] - a[1]);
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = "<h2>Ваши результаты:</h2>";
-    sortedTypes.forEach(type => {
-      resultDiv.innerHTML += `<p>${type[0].toUpperCase()}: ${type[1]} баллов</p>`;
-    });
-  }
-</script>
+  </script>
 </body>
 </html>
