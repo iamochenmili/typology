@@ -1,0 +1,9 @@
+body {
+  font-family: 'Consolas', monospace; /* Шрифт для всей страницы */
+}
+
+.center-container {
+  max-width: 800px; /* Максимальная ширина контента */
+  margin: 0 auto; /* Авто-марджины для центрирования */
+  text-align: left; /* Выравнивание текста по левому краю */
+}
