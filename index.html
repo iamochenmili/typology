@@ -1,1 +1,60 @@
-<h1>Hello, world!<h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Соционический тест</title>
+<style>
+  .question { margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<form id="sociotypeTest">
+
+  <div class="question">
+    <p>Вы предпочитаете работать в команде или в одиночку?</p>
+    <input type="radio" id="team" name="q1" value="E">
+    <label for="team">В команде</label><br>
+    <input type="radio" id="solo" name="q1" value="I">
+    <label for="solo">В одиночку</label>
+  </div>
+
+  <!-- Добавьте больше вопросов сюда -->
+
+  <button type="button" onclick="calculateResults()">Получить результат</button>
+
+</form>
+
+<div id="result"></div>
+
+<script>
+// Функция подсчета результатов
+function calculateResults() {
+  const form = document.getElementById('sociotypeTest');
+  let result = {};
+  
+  // Итерация по всем вопросам формы
+  const formData = new FormData(form);
+  for (let entry of formData.entries()) {
+    const [key, value] = entry;
+    result[value] = (result[value] || 0) + 1;
+  }
+
+  // Определение максимального результата
+  let maxType = null;
+  let maxValue = 0;
+  for (let type in result) {
+    if (result[type] > maxValue) {
+      maxValue = result[type];
+      maxType = type;
+    }
+  }
+
+  // Отображение результата
+  const resultDiv = document.getElementById('result');
+  resultDiv.innerHTML = `Ваш соционический тип: ${maxType} с баллами: ${maxValue}`;
+}
+</script>
+
+</body>
+</html>
