@@ -1,1 +1,89 @@
-<h1>Hello, world!<h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Соционический тест</title>
+<style>
+  .question { margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<form id="sociotypeTest">
+
+  <!-- Первый вопрос -->
+  <div class="question">
+    <p>Что из этого для вас более привлекательно для изучения?</p>
+    <input type="radio" id="theories" name="q1" value="theories">
+    <label for="theories">Интересные теории</label><br>
+    <input type="radio" id="skills" name="q1" value="skills">
+    <label for="skills">Практические навыки</label>
+  </div>
+
+  <!-- Второй вопрос -->
+  <div class="question">
+    <p>Что вам больше интересно:</p>
+    <input type="radio" id="clothes" name="q2" value="clothes">
+    <label for="clothes">Выбирать одежду в магазине, изучать вкусы блюд, экспериментировать со вкусом в музыке</label><br>
+    <input type="radio" id="potential" name="q2" value="potential">
+    <label for="potential">Развивать свой потенциал, способности</label>
+  </div>
+
+  <button type="button" onclick="calculateResults()">Получить результат</button>
+
+</form>
+
+<div id="result"></div>
+
+<script>
+function calculateResults() {
+  const types = {
+    ile: 0, sei: 0, ese: 0, lii: 0, 
+    eie: 0, lsi: 0, sle: 0, iei: 0,
+    see: 0, ili: 0, lie: 0, esi: 0,
+    lse: 0, eii: 0, iee: 0, sli: 0
+  };
+
+  const form = document.getElementById('sociotypeTest');
+  const formData = new FormData(form);
+  
+  for (let entry of formData.entries()) {
+    const [question, value] = entry;
+    switch(question){
+      case 'q1': 
+        if (value === "theories") {
+          increaseScores(types, ['ile', 'sei', 'ese', 'lii', 'eie', 'lsi', 'sle', 'iei']);
+        } else {
+          increaseScores(types, ['see', 'ili', 'lie', 'esi', 'lse', 'eii', 'iee', 'sli']);
+        }
+        break;
+      case 'q2':
+        if (value === "clothes") {
+          increaseScores(types, ['ile', 'sei', 'ese', 'lii', 'lse', 'eii', 'iee', 'sli']);
+        } else {
+          increaseScores(types, ['eie', 'lsi', 'sle', 'iei', 'see', 'ili', 'lie', 'esi']);
+        }
+        break;
+    }
+  }
+
+  // Сортируем результаты
+  const sortedTypes = Object.entries(types).sort((a, b) => b[1] - a[1]);
+  
+  // Выводим результаты
+  const resultDiv = document.getElementById('result');
+  resultDiv.innerHTML = "<h2>Ваши результаты:</h2>";
+  sortedTypes.forEach(type => {
+    resultDiv.innerHTML += `<p>${type[0].toUpperCase()}: ${type[1]} баллов</p>`;
+  });
+}
+
+function increaseScores(types, keys){
+  keys.forEach(key => {
+    types[key]++;
+  });
+}
+</script>
+
+</body>
+</html>
