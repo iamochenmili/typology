@@ -1,60 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-<meta charset="UTF-8">
-<title>Соционический тест</title>
-<style>
-  .question { margin-bottom: 20px; }
-</style>
+  <title>Соционический тест</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <div class="center-container">
+    <h1>Соционический тест</h1>
 
-<form id="sociotypeTest">
+    <form id="socionicsTest">
 
-  <div class="question">
-    <p>Вы предпочитаете работать в команде или в одиночку?</p>
-    <input type="radio" id="team" name="q1" value="E">
-    <label for="team">В команде</label><br>
-    <input type="radio" id="solo" name="q1" value="I">
-    <label for="solo">В одиночку</label>
+      <p><B>Что из этого для вас более привлекательно для изучения?</B></p>
+      <input type="radio" name="question1" value="theories"> Теории об устройстве чего-либо<br>
+      <input type="radio" name="question1" value="skills"> Практические навыки, алгоритмы<br>
+
+
+      <p><B>Что вам больше интересно?</B></p>
+      <input type="radio" name="question2" value="shopping"> Выбирать одежду в магазине, изучать вкусы блюд,
+      экспериментировать с вкусом в музыке<br>
+      <input type="radio" name="question2" value="developing"> Развивать свой потенциал, способности<br>
+
+      
+      <p><B>Что вам интереснее замечать в людях?</B></p>
+      <input type="radio" name="question3" value="behavior"> Поведение, речь, поступки, реакции, внешние атрибуты<br>
+      <input type="radio" name="question3" value="values"> Отношение к другим, их ценности<br>
+
+
+      <p><B>Что кажется интереснее?</B></p>
+      <input type="radio" name="question4" value="trend"> Изучать тенденции, какие процессы происходят в мире и к чему
+      они приводят<br>
+      <input type="radio" name="question4" value="idea"> Размышлять над тем, какие события вообще возможны и какие идеи
+      было бы неплохо воплотить в жизнь<br>
+
+
+      <p><B>Вы сильнее расстраиваетесь, когда...</B></p>
+      <input type="radio" name="question5" value="ust"> Ваши отношения с людьми портятся или становятся неопределёнными<br>
+      <input type="radio" name="question5" value="upr"> Кто-то совершает плохие поступки или ведёт себя не так, как вы бы хотели<br>
+
+      <p><B>В непонятной ситуации вы бы предпочли в первую очередь...</B></p>
+      <input type="radio" name="question6" value="ust"> Узнать, что и как нужно делать, чтобы справиться с проблемой<br>
+      <input type="radio" name="question6" value="upr"> Понять, что происходит и из-за чего возникла проблема<br>
+
+      <p><B>Вы больше стараетесь контролировать окружающее пространство на предмет...</B></p>
+      <input type="radio" name="question7" value="besp"> Неприятных запахов, вкусов, тактильных ощущений, тяжёлых для восприятия зрелищ<br>
+      <input type="radio" name="question7" value="pred"> Опасностей, угроз здоровью или репутации<br>
+
+      <p><B>Для вас быть готовым к будущему – это</B></p>
+      <input type="radio" name="question8" value="besp"> Учесть как можно больше вариантов развития событий, ничего не забыв<br>
+      <input type="radio" name="question8" value="pred"> Понять, как будут развиваться события во времени, и к чему приведут те или иные действия<br>
+
+      <button type="button" onclick="showResults()" style="margin-top: 20px;">Показать результат</button>
+
+    </form>
+
+    <div id="results"></div>
   </div>
+  <script>
+    function showResults() {
+      const answers = {
+        question1: document.querySelector('input[name="question1"]:checked') ? document.querySelector('input[name="question1"]:checked').value : null,
+        question2: document.querySelector('input[name="question2"]:checked') ? document.querySelector('input[name="question2"]:checked').value : null,
+        question3: document.querySelector('input[name="question3"]:checked') ? document.querySelector('input[name="question3"]:checked').value : null,
+        question4: document.querySelector('input[name="question4"]:checked') ? document.querySelector('input[name="question4"]:checked').value : null,
+        question5: document.querySelector('input[name="question5"]:checked') ? document.querySelector('input[name="question5"]:checked').value : null,
+        question6: document.querySelector('input[name="question6"]:checked') ? document.querySelector('input[name="question6"]:checked').value : null,
+        question7: document.querySelector('input[name="question7"]:checked') ? document.querySelector('input[name="question7"]:checked').value : null,
+        question8: document.querySelector('input[name="question8"]:checked') ? document.querySelector('input[name="question8"]:checked').value : null
+      };
 
-  <!-- Добавьте больше вопросов сюда -->
+      // Баллы для каждого типа
+      let typesScores = {
+        ile: 0, sei: 0, ese: 0, lii: 0,
+        eie: 0, lsi: 0, sle: 0, iei: 0,
+        see: 0, ili: 0, lie: 0, esi: 0,
+        lse: 0, eii: 0, iee: 0, sli: 0
+      };
 
-  <button type="button" onclick="calculateResults()">Получить результат</button>
+      // Настройка распределения баллов
+      if (answers.question1 === "theories") {
+        ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question1 === "skills") {
+        ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      }
 
-</form>
+      if (answers.question2 === "shopping") {
+        ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question2 === "developing") {
+        ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      }
 
-<div id="result"></div>
+      if (answers.question3 === "behavior") {
+        ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question3 === "values") {
+        ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      }
 
-<script>
-// Функция подсчета результатов
-function calculateResults() {
-  const form = document.getElementById('sociotypeTest');
-  let result = {};
-  
-  // Итерация по всем вопросам формы
-  const formData = new FormData(form);
-  for (let entry of formData.entries()) {
-    const [key, value] = entry;
-    result[value] = (result[value] || 0) + 1;
-  }
+      if (answers.question4 === "idea") {
+        ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question4 === "trend") {
+        ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      }
 
-  // Определение максимального результата
-  let maxType = null;
-  let maxValue = 0;
-  for (let type in result) {
-    if (result[type] > maxValue) {
-      maxValue = result[type];
-      maxType = type;
+      if (answers.question5 === "ust") {
+        ["ile", "sei", "lse", "eii", "lie", "esi","sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question5 === "upr") {
+        ["see", "ili", "ese", "lii","iee", "sli","eie", "lsi", ].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question6 === "ust") {
+        ["ile", "sei", "lse", "eii", "lie", "esi","sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question6 === "upr") {
+        ["see", "ili", "ese", "lii","iee", "sli","eie", "lsi", ].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question7 === "besp") {
+        ["ile", "sei", "lie", "esi","iee", "sli","eie", "lsi"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question7 === "pred") {
+        ["lse", "eii","sle", "iei","see", "ili", "ese", "lii"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question8 === "besp") {
+        ["ile", "sei", "lie", "esi","iee", "sli","eie", "lsi"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question8 === "pred") {
+        ["lse", "eii","sle", "iei","see", "ili", "ese", "lii"].forEach(type => typesScores[type] += 1);
+      }
+      // Сортировка и вывод результатов
+      const sortedResults = Object.entries(typesScores).sort((a, b) => b[1] - a[1]);
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = '<h2>Результаты:</h2>';
+      sortedResults.forEach(result => {
+        resultsDiv.innerHTML += `<p>${result[0].toUpperCase()}: ${result[1]}</p>`;
+      });
     }
-  }
-
-  // Отображение результата
-  const resultDiv = document.getElementById('result');
-  resultDiv.innerHTML = `Ваш соционический тип: ${maxType} с баллами: ${maxValue}`;
-}
-</script>
-
+    
+  </script>
 </body>
 </html>
