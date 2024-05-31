@@ -10,15 +10,28 @@
   <h1>Соционический тест</h1>
 
   <form id="socionicsTest">
+    
       <p>Что из этого для вас более привлекательно для изучения?</p>
-      <input type="radio" name="question1" value="theories"> Интересные теории<br>
-      <input type="radio" name="question1" value="skills"> Практические навыки<br>
+      <input type="radio" name="question1" value="theories"> Теории об устройстве чего-либо<br>
+      <input type="radio" name="question1" value="skills"> Практические навыки, алгоритмы<br>
 
+    
       <p>Что вам больше интересно:</p>
       <input type="radio" name="question2" value="shopping"> Выбирать одежду в магазине, изучать вкусы блюд, экспериментировать с вкусом в музыке<br>
       <input type="radio" name="question2" value="developing"> Развивать свой потенциал, способности<br>
 
-      <button type="button" onclick="showResults()">Показать результат</button>
+    
+      <p>Что вам интереснее замечать в людях?</p>
+      <input type="radio" name="question3" value="behavior"> Поведение, речь, поступки, реакции, внешние атрибуты<br>
+      <input type="radio" name="question3" value="values"> Отношение к другим, их ценности<br>
+
+
+      <p>Что кажется интереснее?</p>
+      <input type="radio" name="question4" value="trend"> Изучать тенденции, какие процессы происходят в мире и к чему они приводят<br>
+      <input type="radio" name="question4" value="idea"> Размышлять над тем, какие события вообще возможны и какие идеи было бы неплохо воплотить в жизнь<br>
+
+      <button type="button" onclick="showResults()" style="margin-top: 20px;">Показать результат</button>
+
   </form>
 
   <div id="results"></div>
@@ -28,6 +41,8 @@
           const answers = {
               question1: document.querySelector('input[name="question1"]:checked') ? document.querySelector('input[name="question1"]:checked').value : null,
               question2: document.querySelector('input[name="question2"]:checked') ? document.querySelector('input[name="question2"]:checked').value : null,
+              question3: document.querySelector('input[name="question3"]:checked') ? document.querySelector('input[name="question3"]:checked').value : null,
+              question4: document.querySelector('input[name="question4"]:checked') ? document.querySelector('input[name="question4"]:checked').value : null,
           };
 
           // Баллы для каждого типа
@@ -51,6 +66,17 @@
               ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
           }
 
+          if (answers.question3 === "behavior") {
+              ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+          } else if (answers.question3 === "values") {
+              ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+          }
+
+          if (answers.question4 === "idea") {
+              ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+          } else if (answers.question4 === "trend") {
+              ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+          }
           // Сортировка и вывод результатов
           const sortedResults = Object.entries(typesScores).sort((a, b) => b[1] - a[1]);
           const resultsDiv = document.getElementById("results");
