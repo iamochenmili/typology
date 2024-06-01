@@ -3,16 +3,17 @@ body {
 }
 
 .center-container {
-  max-width: 800px; /* Максимальная ширина контента */
+  max-width: 900px; /* Максимальная ширина контента */
   margin: 0 auto; /* Авто-марджины для центрирования */
   text-align: left; /* Выравнивание текста по левому краю */
 }
 
-.center-container, .center-container input[type="radio"], .center-container button {
-  font-size: 18px; /* Устанавливает размер шрифта для содержимого вопросов, вариантов ответов и кнопки */
+/* Устанавливаем размер шрифта для содержимого в .center-container отдельно */
+.center-container, .center-container input  {
+  font-size: 16px; /* Устанавливает размер шрифта */
 }
 
-/* Дополнительно, если вы захотите, чтобы результаты тоже имели этот размер шрифта */
-#results {
-  font-size: 18px;
+.center-container button {
+  font-size: 16px;
+  margin-top: 20px;
 }
