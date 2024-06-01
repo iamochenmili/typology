@@ -76,8 +76,8 @@
         question6: document.querySelector('input[name="question6"]:checked') ? document.querySelector('input[name="question6"]:checked').value : null,
         question7: document.querySelector('input[name="question7"]:checked') ? document.querySelector('input[name="question7"]:checked').value : null,
         question8: document.querySelector('input[name="question8"]:checked') ? document.querySelector('input[name="question8"]:checked').value : null,
-        question9: document.querySelector('input[name="question7"]:checked') ? document.querySelector('input[name="question9"]:checked').value : null,
-        question10: document.querySelector('input[name="question8"]:checked') ? document.querySelector('input[name="question10"]:checked').value : null
+        question9: document.querySelector('input[name="question9"]:checked') ? document.querySelector('input[name="question9"]:checked').value : null,
+        question10: document.querySelector('input[name="question10"]:checked') ? document.querySelector('input[name="question10"]:checked').value : null
       };
 
       // Баллы для каждого типа
@@ -138,13 +138,13 @@
       }
 
       if (answers.question9 === "con") {
-        ["ile","esi", "sli","eie","eii","sle","ili", "ese",].forEach(type => typesScores[type] += 1);
+        ["ile","esi", "sli","eie","eii","sle","ili", "ese"].forEach(type => typesScores[type] += 1);
       } else if (answers.question9 === "emo") {
         ["lse","sei","lie","iee","lsi","iei","see", "lii"].forEach(type => typesScores[type] += 1);
       }
 
       if (answers.question10 === "con") {
-        ["ile","esi", "sli","eie","eii","sle","ili", "ese",].forEach(type => typesScores[type] += 1);
+        ["ile","esi", "sli","eie","eii","sle","ili", "ese"].forEach(type => typesScores[type] += 1);
       } else if (answers.question10 === "emo") {
         ["lse","sei","lie","iee","lsi","iei","see", "lii"].forEach(type => typesScores[type] += 1);
       }
