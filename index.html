@@ -4,6 +4,8 @@
 <head>
   <title>Соционический тест</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
@@ -22,7 +24,7 @@
       <p><B>Что ваc больше привлекает?</B></p>
       <label>
       <input type="radio" name="question2" value="rass"> Выбирать одежду в магазине, изучать вкусы блюд,
-      экспериментировать с вкусом в музыке</label><br>
+      экспериментировать со вкусом в музыке</label><br>
       <label>
       <input type="radio" name="question2" value="resh"> Развивать свой потенциал, способности, статус</label><br>
 
@@ -93,10 +95,11 @@
       <label>
       <input type="radio" name="question12" value="str"> Уделять много внимания объектам материального мира, ощущениям, а также часто задумываться о своих способностях и статусе</label><br>
 
-      <button type="button" onclick="showResults()" style="margin-top: 20px;">Показать результат</button>
-
+        
     </form>
-
+    
+<button type="button" onclick="showResults()">Показать результат</button>
+    
     <div id="results"></div>
   </div>
   <script>
