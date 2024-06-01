@@ -7,3 +7,12 @@ body {
   margin: 0 auto; /* Авто-марджины для центрирования */
   text-align: left; /* Выравнивание текста по левому краю */
 }
+
+.center-container, .center-container input[type="radio"], .center-container button {
+  font-size: 18px; /* Устанавливает размер шрифта для содержимого вопросов, вариантов ответов и кнопки */
+}
+
+/* Дополнительно, если вы захотите, чтобы результаты тоже имели этот размер шрифта */
+#results {
+  font-size: 18px;
+}
