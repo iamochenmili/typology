@@ -13,25 +13,25 @@
     <form id="socionicsTest">
 
       <p><B>Что из этого для вас более привлекательно для изучения?</B></p>
-      <input type="radio" name="question1" value="theories"> Теории об устройстве чего-либо<br>
-      <input type="radio" name="question1" value="skills"> Практические навыки, алгоритмы<br>
+      <input type="radio" name="question1" value="ves"> Теории об устройстве чего-либо<br>
+      <input type="radio" name="question1" value="ser"> Практические навыки, алгоритмы<br>
 
 
-      <p><B>Что вам больше интересно?</B></p>
-      <input type="radio" name="question2" value="shopping"> Выбирать одежду в магазине, изучать вкусы блюд,
+      <p><B>Что ваc больше привлекает?</B></p>
+      <input type="radio" name="question2" value="rass"> Выбирать одежду в магазине, изучать вкусы блюд,
       экспериментировать с вкусом в музыке<br>
-      <input type="radio" name="question2" value="developing"> Развивать свой потенциал, способности<br>
+      <input type="radio" name="question2" value="resh"> Развивать свой потенциал, способности, статус<br>
 
       
       <p><B>Что вам интереснее замечать в людях?</B></p>
-      <input type="radio" name="question3" value="behavior"> Поведение, речь, поступки, реакции, внешние атрибуты<br>
-      <input type="radio" name="question3" value="values"> Отношение к другим, их ценности<br>
+      <input type="radio" name="question3" value="ves"> Поведение, речь, поступки, реакции, внешние атрибуты<br>
+      <input type="radio" name="question3" value="ser"> Отношение к другим, их ценности<br>
 
 
       <p><B>Что кажется интереснее?</B></p>
-      <input type="radio" name="question4" value="trend"> Изучать тенденции, какие процессы происходят в мире и к чему
+      <input type="radio" name="question4" value="resh"> Изучать тенденции, какие процессы происходят в мире и к чему
       они приводят<br>
-      <input type="radio" name="question4" value="idea"> Размышлять над тем, какие события вообще возможны и какие идеи
+      <input type="radio" name="question4" value="rass"> Размышлять над тем, какие события вообще возможны и какие идеи
       было бы неплохо воплотить в жизнь<br>
 
 
@@ -47,9 +47,17 @@
       <input type="radio" name="question7" value="besp"> Неприятных запахов, вкусов, тактильных ощущений, тяжёлых для восприятия зрелищ<br>
       <input type="radio" name="question7" value="pred"> Опасностей, угроз здоровью или репутации<br>
 
-      <p><B>Для вас быть готовым к будущему – это</B></p>
+      <p><B>Для вас быть готовым к будущему – это...</B></p>
       <input type="radio" name="question8" value="besp"> Учесть как можно больше вариантов развития событий, ничего не забыв<br>
       <input type="radio" name="question8" value="pred"> Понять, как будут развиваться события во времени, и к чему приведут те или иные действия<br>
+
+      <p><B>Когда вы даёте оценку другому человеку, вы...</B></p>
+      <input type="radio" name="question9" value="con"> Стараетесь тщательно обдумать, как вы должны к нему относиться и приемлемо ли его поведение<br>
+      <input type="radio" name="question9" value="emo"> Быстро формулируете своё мнение, не углубляясь в подробности <br>
+
+      <p><B>При выполнении заданий или изучении сложных материалов на учёбе или работе вы...</B></p>
+      <input type="radio" name="question10" value="con"> Изучаете только основные принципы и позволяете оставить себе что-то недопонятым<br>
+      <input type="radio" name="question10" value="emo"> Стремитесь к полному пониманию устройства того или иного явления или алгоритма<br>
 
       <button type="button" onclick="showResults()" style="margin-top: 20px;">Показать результат</button>
 
@@ -67,7 +75,9 @@
         question5: document.querySelector('input[name="question5"]:checked') ? document.querySelector('input[name="question5"]:checked').value : null,
         question6: document.querySelector('input[name="question6"]:checked') ? document.querySelector('input[name="question6"]:checked').value : null,
         question7: document.querySelector('input[name="question7"]:checked') ? document.querySelector('input[name="question7"]:checked').value : null,
-        question8: document.querySelector('input[name="question8"]:checked') ? document.querySelector('input[name="question8"]:checked').value : null
+        question8: document.querySelector('input[name="question8"]:checked') ? document.querySelector('input[name="question8"]:checked').value : null,
+        question9: document.querySelector('input[name="question7"]:checked') ? document.querySelector('input[name="question9"]:checked').value : null,
+        question10: document.querySelector('input[name="question8"]:checked') ? document.querySelector('input[name="question10"]:checked').value : null
       };
 
       // Баллы для каждого типа
@@ -79,27 +89,27 @@
       };
 
       // Настройка распределения баллов
-      if (answers.question1 === "theories") {
+      if (answers.question1 === "ves") {
         ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
-      } else if (answers.question1 === "skills") {
+      } else if (answers.question1 === "ser") {
         ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
       }
 
-      if (answers.question2 === "shopping") {
+      if (answers.question2 === "rass") {
         ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
-      } else if (answers.question2 === "developing") {
+      } else if (answers.question2 === "resh") {
         ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
       }
 
-      if (answers.question3 === "behavior") {
+      if (answers.question3 === "ves") {
         ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
-      } else if (answers.question3 === "values") {
+      } else if (answers.question3 === "ser") {
         ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
       }
 
-      if (answers.question4 === "idea") {
+      if (answers.question4 === "rass") {
         ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
-      } else if (answers.question4 === "trend") {
+      } else if (answers.question4 === "resh") {
         ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
       }
 
@@ -126,6 +136,20 @@
       } else if (answers.question8 === "pred") {
         ["lse", "eii","sle", "iei","see", "ili", "ese", "lii"].forEach(type => typesScores[type] += 1);
       }
+
+      if (answers.question9 === "con") {
+        ["ile","esi", "sli","eie","eii","sle","ili", "ese",].forEach(type => typesScores[type] += 1);
+      } else if (answers.question9 === "emo") {
+        ["lse","sei","lie","iee","lsi","iei","see", "lii"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question10 === "con") {
+        ["ile","esi", "sli","eie","eii","sle","ili", "ese",].forEach(type => typesScores[type] += 1);
+      } else if (answers.question10 === "emo") {
+        ["lse","sei","lie","iee","lsi","iei","see", "lii"].forEach(type => typesScores[type] += 1);
+      }
+
+      
       // Сортировка и вывод результатов
       const sortedResults = Object.entries(typesScores).sort((a, b) => b[1] - a[1]);
       const resultsDiv = document.getElementById("results");
