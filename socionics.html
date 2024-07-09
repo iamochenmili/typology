@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Соционический тест</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+  <div class="center-container">
+    <h1>Соционический тест</h1>
+
+    <form id="socionicsTest">
+
+      <p><B>Что из этого для вас более привлекательно для изучения?</B></p>
+      <label>
+      <input type="radio" name="question1" value="ves"> Теории об устройстве чего-либо</label><br>
+      <label>
+      <input type="radio" name="question1" value="ser"> Практические навыки, алгоритмы</label><br>
+
+      
+      <p><B>Что ваc больше привлекает?</B></p>
+      <label>
+      <input type="radio" name="question2" value="rass"> Выбирать одежду в магазине, изучать вкусы блюд,
+      экспериментировать со вкусом в музыке</label><br>
+      <label>
+      <input type="radio" name="question2" value="resh"> Развивать свой потенциал, способности, статус</label><br>
+
+      
+      <p><B>Что вам интереснее замечать в людях?</B></p>
+       <label>
+      <input type="radio" name="question3" value="ves"> Поведение, речь, поступки, реакции, внешние атрибуты</label><br>
+      <label>
+      <input type="radio" name="question3" value="ser"> Отношение к другим, их ценности</label><br>
+
+     
+      <p><B>Что кажется интереснее?</B></p>
+       <label>
+      <input type="radio" name="question4" value="resh"> Изучать тенденции, какие процессы происходят в мире и к чему
+      они приводят</label><br>
+      <label>
+      <input type="radio" name="question4" value="rass"> Размышлять над тем, какие события вообще возможны и какие идеи
+      было бы неплохо воплотить в жизнь</label><br>
+
+      
+      <p><B>Вы сильнее расстраиваетесь, когда...</B></p>
+      <label>
+      <input type="radio" name="question5" value="ust"> Ваши отношения с людьми портятся или становятся неопределёнными</label><br>
+      <label>
+      <input type="radio" name="question5" value="upr"> Кто-то совершает плохие поступки или ведёт себя не так, как вы бы хотели</label><br>
+
+      
+      <p><B>В непонятной ситуации вы бы предпочли в первую очередь...</B></p>
+      <label>
+      <input type="radio" name="question6" value="ust"> Узнать, что и как нужно делать, чтобы справиться с проблемой</label><br>
+      <label>
+      <input type="radio" name="question6" value="upr"> Понять, что происходит и из-за чего возникла проблема</label><br>
+
+      
+      <p><B>Вы больше стараетесь контролировать окружающее пространство на предмет...</B></p>
+      <label>
+      <input type="radio" name="question7" value="besp"> Неприятных запахов, вкусов, тактильных ощущений, тяжёлых для восприятия зрелищ</label><br>
+      <label>
+      <input type="radio" name="question7" value="pred"> Опасностей, угроз здоровью или репутации</label><br>
+
+      <p><B>Для вас быть готовым к будущему – это...</B></p>
+      <label>
+      <input type="radio" name="question8" value="besp"> Учесть как можно больше вариантов развития событий, ничего не забыв</label><br>
+      <label>
+      <input type="radio" name="question8" value="pred"> Понять, как будут развиваться события во времени, и к чему приведут те или иные действия</label><br>
+
+      <p><B>Когда вы даёте оценку другому человеку, вы...</B></p>
+      <label>
+      <input type="radio" name="question9" value="con"> Стараетесь тщательно обдумать, как вы должны к нему относиться и приемлемо ли его поведение</label><br>
+      <label>
+      <input type="radio" name="question9" value="emo"> Быстро формулируете своё мнение, не углубляясь в подробности</label><br>
+
+      <p><B>При выполнении заданий или изучении сложных материалов на учёбе или работе вы...</B></p>
+      <label>
+      <input type="radio" name="question10" value="con"> Изучаете только основные принципы и позволяете оставить себе что-то недопонятым</label><br>
+      <label>
+      <input type="radio" name="question10" value="emo"> Стремитесь к полному пониманию устройства того или иного явления или алгоритма</label><br>
+
+      <p><B>Вам больше свойственно...</B></p>
+      <label>
+      <input type="radio" name="question11" value="tac"> Много думать над событиями: анализировать тенденции, придумывать и прорабатывать новые идеи</label><br>
+      <label>
+      <input type="radio" name="question11" value="str"> Не погружаться глубоко в сферы событий и идей</label><br>
+
+      <p><B>Вам больше свойственно...</B></p>
+      <label>
+      <input type="radio" name="question12" value="tac"> Быстро оценивать способности и статус других людей, а также не зацикливаться на физических ощущениях</label><br>
+      <label>
+      <input type="radio" name="question12" value="str"> Уделять много внимания объектам материального мира, ощущениям, а также часто задумываться о своих способностях и статусе</label><br>
+
+        
+    </form>
+    
+<button type="button" onclick="showResults()">Показать результат</button>
+    
+    <div id="results"></div>
+  </div>
+  <script>
+    function showResults() {
+      const answers = {
+        question1: document.querySelector('input[name="question1"]:checked') ? document.querySelector('input[name="question1"]:checked').value : null,
+        question2: document.querySelector('input[name="question2"]:checked') ? document.querySelector('input[name="question2"]:checked').value : null,
+        question3: document.querySelector('input[name="question3"]:checked') ? document.querySelector('input[name="question3"]:checked').value : null,
+        question4: document.querySelector('input[name="question4"]:checked') ? document.querySelector('input[name="question4"]:checked').value : null,
+        question5: document.querySelector('input[name="question5"]:checked') ? document.querySelector('input[name="question5"]:checked').value : null,
+        question6: document.querySelector('input[name="question6"]:checked') ? document.querySelector('input[name="question6"]:checked').value : null,
+        question7: document.querySelector('input[name="question7"]:checked') ? document.querySelector('input[name="question7"]:checked').value : null,
+        question8: document.querySelector('input[name="question8"]:checked') ? document.querySelector('input[name="question8"]:checked').value : null,
+        question9: document.querySelector('input[name="question9"]:checked') ? document.querySelector('input[name="question9"]:checked').value : null,
+        question10: document.querySelector('input[name="question10"]:checked') ? document.querySelector('input[name="question10"]:checked').value : null,
+        question11: document.querySelector('input[name="question11"]:checked') ? document.querySelector('input[name="question11"]:checked').value : null,
+        question12: document.querySelector('input[name="question12"]:checked') ? document.querySelector('input[name="question12"]:checked').value : null
+      };
+
+      // Баллы для каждого типа
+      let typesScores = {
+        ile: 0, sei: 0, ese: 0, lii: 0,
+        eie: 0, lsi: 0, sle: 0, iei: 0,
+        see: 0, ili: 0, lie: 0, esi: 0,
+        lse: 0, eii: 0, iee: 0, sli: 0
+      };
+
+      // Настройка распределения баллов
+      if (answers.question1 === "ves") {
+        ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question1 === "ser") {
+        ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question2 === "rass") {
+        ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question2 === "resh") {
+        ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question3 === "ves") {
+        ["ile", "sei", "ese", "lii", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question3 === "ser") {
+        ["see", "ili", "lie", "esi", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question4 === "rass") {
+        ["ile", "sei", "ese", "lii", "lse", "eii", "iee", "sli"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question4 === "resh") {
+        ["see", "ili", "lie", "esi", "eie", "lsi", "sle", "iei"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question5 === "ust") {
+        ["ile", "sei", "lse", "eii", "lie", "esi","sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question5 === "upr") {
+        ["see", "ili", "ese", "lii","iee", "sli","eie", "lsi", ].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question6 === "ust") {
+        ["ile", "sei", "lse", "eii", "lie", "esi","sle", "iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question6 === "upr") {
+        ["see", "ili", "ese", "lii","iee", "sli","eie", "lsi", ].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question7 === "besp") {
+        ["ile", "sei", "lie", "esi","iee", "sli","eie", "lsi"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question7 === "pred") {
+        ["lse", "eii","sle", "iei","see", "ili", "ese", "lii"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question8 === "besp") {
+        ["ile", "sei", "lie", "esi","iee", "sli","eie", "lsi"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question8 === "pred") {
+        ["lse", "eii","sle", "iei","see", "ili", "ese", "lii"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question9 === "con") {
+        ["ile","esi", "sli","eie","eii","sle","ili", "ese"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question9 === "emo") {
+        ["lse","sei","lie","iee","lsi","iei","see", "lii"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question10 === "con") {
+        ["ile","esi", "sli","eie","eii","sle","ili", "ese"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question10 === "emo") {
+        ["lse","sei","lie","iee","lsi","iei","see", "lii"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question11 === "tac") {
+        ["ile","esi", "ili", "ese","lse","iee","lsi","iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question11 === "str") {
+        ["sei","lie","see", "lii","sli","eie","eii","sle"].forEach(type => typesScores[type] += 1);
+      }
+
+      if (answers.question12 === "tac") {
+        ["ile","esi", "ili", "ese","lse","iee","lsi","iei"].forEach(type => typesScores[type] += 1);
+      } else if (answers.question12 === "str") {
+        ["sei","lie","see", "lii","sli","eie","eii","sle"].forEach(type => typesScores[type] += 1);
+      }
+
+      
+      // Сортировка и вывод результатов
+      const sortedResults = Object.entries(typesScores).sort((a, b) => b[1] - a[1]);
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = '<h2>Результаты:</h2>';
+      sortedResults.forEach(result => {
+        resultsDiv.innerHTML += `<p>${result[0].toUpperCase()}: ${result[1]}</p>`;
+      });
+    }
+    
+  </script>
+</body>
+</html>
