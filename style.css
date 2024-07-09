@@ -1,0 +1,19 @@
+body {
+  font-family: 'Consolas', monospace; /* Шрифт для всей страницы */
+}
+
+.center-container {
+  max-width: 900px; /* Максимальная ширина контента */
+  margin: 0 auto; /* Авто-марджины для центрирования */
+  text-align: left; /* Выравнивание текста по левому краю */
+}
+
+/* Устанавливаем размер шрифта для содержимого в .center-container отдельно */
+.center-container, .center-container input  {
+  font-size: 16px; /* Устанавливает размер шрифта */
+}
+
+.center-container button {
+  font-size: 16px;
+  margin-top: 20px;
+}
