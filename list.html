@@ -9,20 +9,29 @@
               font-family: Arial, sans-serif;
               background-color: #f9f9f9;
               margin: 0;
-              padding: 20px;
+              padding: 12px;
+          }
+
+          .container {
+              width: 100%;
+              max-width: 94%; /* Максимальная ширина контейнера */
+              margin: 0 auto; /* Центрирование контейнера */
+              background-color: #fff;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+              padding: 18px; /* Добавим отступы для заголовка и таблицы */
           }
 
           h1 {
-            font-size: 20px; /* Размер заголовка страницы */
-            color: #333;
+              font-size: 20px; /* Размер заголовка страницы */
+              color: #333;
+              text-align: left; /* Выравнивание заголовка по левому краю */
+              margin-top: 0; /* Убираем верхний отступ */
           }
         
           table {
               width: 100%;
               border-collapse: collapse;
               margin-bottom: 20px;
-              background-color: #fff;
-              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           }
           th, td {
               padding: 12px;
@@ -42,88 +51,106 @@
               background-color: #f1f1f1;
           }
           th, td:first-child {
-              width: 36%; /* пропорции таблицы */
+              width: 38%; /* пропорции таблицы */
           }
           td:last-child {
-              width: 64%; /* пропорции таблицы */
+              width: 62%; /* пропорции таблицы */
+          }
+
+          /* Медиа-запрос для экранов больше 1080px */
+          @media (min-width: 1080px) {
+              .container {
+                  width: 60%; /* Уменьшение ширины контейнера */
+              }
+            th, td {
+            font-size: 17px;
+            }
+            th, td:first-child {
+                width: 30%; /* пропорции таблицы */
+            }
+            td:last-child {
+                width: 70%; /* пропорции таблицы */
+            }
           }
       </style>
   </head>
 <body>
-  <h1>Соционическая база известных людей</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Социотип</th>
-                <th>Имена</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Дон Кихот</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Дюма</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Гюго</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Робеспьер</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Гамлет</td>
-                <td>Ольга Бузова</td>
-            </tr>
-            <tr>
-                <td>Горький</td>
-                <td>Земфира</td>
-            </tr>
-            <tr>
-                <td>Жуков</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Есенин</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Наполеон</td>
-                <td>Катя Лель</td>
-            </tr>
-            <tr>
-                <td>Бальзак</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Джек Лондон</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Драйзер</td>
-                <td>Авдотья Смирнова</td>
-            </tr>
-            <tr>
-                <td>Штирлиц</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Достоевский</td>
-                <td>Ёлка</td>
-            </tr>
-            <tr>
-                <td>Гексли</td>
-                <td>Юлия Меньшова</td>
-            </tr>
-            <tr>
-                <td>Габен</td>
-                <td>Татьяна Толстая</td>
-            </tr>
-        </tbody>
-    </table>
+  <div class="container">
+      <h1>Соционическая база известных людей</h1>
+      <table>
+          <thead>
+              <tr>
+                  <th>Социотип</th>
+                  <th>Имена</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Дон Кихот</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Дюма</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Гюго</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Робеспьер</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Гамлет</td>
+                  <td>Ольга Бузова</td>
+              </tr>
+              <tr>
+                  <td>Горький</td>
+                  <td>Земфира</td>
+              </tr>
+              <tr>
+                  <td>Жуков</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Есенин</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Наполеон</td>
+                  <td>Катя Лель</td>
+              </tr>
+              <tr>
+                  <td>Бальзак</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Джек Лондон</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Драйзер</td>
+                  <td>Авдотья Смирнова</td>
+              </tr>
+              <tr>
+                  <td>Штирлиц</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Достоевский</td>
+                  <td>Ёлка</td>
+              </tr>
+              <tr>
+                  <td>Гексли</td>
+                  <td>Юлия Меньшова</td>
+              </tr>
+              <tr>
+                  <td>Габен</td>
+                  <td>Татьяна Толстая</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
 </body>
 </html>
