@@ -8,6 +8,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -15,7 +16,7 @@
         }
         .container {
             width: 95%;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,7 +28,8 @@
             padding: 20px 0;
             background-color: #4CAF50;
             color: white;
-            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
         table {
             width: 100%;
@@ -41,11 +43,14 @@
         th {
             background-color: #f2f2f2;
         }
+        th, td:first-child {
+            font-weight: bold;
+        }
         td:first-child {
-            width: 40%;
+            width: 20%;
         }
         td:last-child {
-            width: 60%;
+            width: 80%;
             word-wrap: break-word;
         }
         @media (max-width: 600px) {
@@ -87,79 +92,79 @@
     </style>
 </head>
 <body>
+    <h1>Соционическая база знаменитостей</h1>
     <div class="container">
-        <h1>Соционическая база знаменитостей</h1>
         <table>
             <thead>
                 <tr>
                     <th>Социотип</th>
-                    <th>Имя</th>
+                    <th>Имена</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td data-label="Социотип">Дон Кихот</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Дюма</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Гюго</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Робеспьер</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Гамлет</td>
-                    <td data-label="Имя">Ольга Бузова</td>
+                    <td data-label="Имена">Ольга Бузова</td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Горький</td>
-                    <td data-label="Имя">Земфира</td>
+                    <td data-label="Имена">Земфира</td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Жуков</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Есенин</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Наполеон</td>
-                    <td data-label="Имя">Катя Лель</td>
+                    <td data-label="Имена">Катя Лель</td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Бальзак</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Джек Лондон</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Драйзер</td>
-                    <td data-label="Имя">Авдотья Смирнова</td>
+                    <td data-label="Имена">Авдотья Смирнова</td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Штирлиц</td>
-                    <td data-label="Имя"></td>
+                    <td data-label="Имена"></td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Достоевский</td>
-                    <td data-label="Имя">Ёлка</td>
+                    <td data-label="Имена">Ёлка</td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Гексли</td>
-                    <td data-label="Имя">Юлия Меньшова</td>
+                    <td data-label="Имена">Юлия Меньшова</td>
                 </tr>
                 <tr>
                     <td data-label="Социотип">Габен</td>
-                    <td data-label="Имя">Татьяна Толстая</td>
+                    <td data-label="Имена">Татьяна Толстая</td>
                 </tr>
             </tbody>
         </table>
